@@ -10,7 +10,6 @@
 .idea
 *.db
 cms_media
-*.egg-info
 *.egg
 distribute*gz
 bin
@@ -18,7 +17,6 @@ lib
 include
 local
 src
-build
 */upload/*
 !*/upload/robots.txt
 !*/upload/favicon.*
