@@ -8,7 +8,7 @@ class DictArgumentParser(argparse.ArgumentParser):
                             in v.items() if \
                             not isinstance(v,dict) \
                             and not k in self.defaults_only))
-            if k.startswith('sub:'):
+            if isinstance(k, basestring) and k.startswith('sub:'):
                 if not subparsers:
                     subparsers = self.add_subparsers()
                 
@@ -18,7 +18,9 @@ class DictArgumentParser(argparse.ArgumentParser):
                 })
                 parser = subparsers.add_parser(k.split(':')[1], **add_args)
             else:
-                self.add_argument(k, **add_args)
+                if not isinstance(k, (list, tuple)):
+                    k = [k,]
+                self.add_argument(*k, **add_args)
 
     def __init__(self, argsdict={}, defaults_only=[], **kwargs):
         super(DictArgumentParser, self).__init__(**kwargs)

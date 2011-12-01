@@ -11,7 +11,7 @@ ARGUMENTS = {'--use-something':{'dest':'use_something',
                  #sub:testarg will create subparser 'testarg'
                  #depth of subargs is unlimited
                  'description':'Test arg subcommand',
-                 'help':'Test help'
+                 'help':'Test help',
                  'func':run_testarg_processing,
                  '--use-sub-something':{'dest':'use_sub_something',
                                                'action':'store_true',
@@ -30,4 +30,4 @@ def main(args=sys.argv):
     args.func(args, argv)
 
 if __name__ == '__main__':
-    main()
+    main(['sample','testarg'])
